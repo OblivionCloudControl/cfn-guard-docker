@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Simple S3 Bucket
+Description: Simple S3 Bucket without encryption
 Resources:
   s3Bucket:
     Type: AWS::S3::Bucket
