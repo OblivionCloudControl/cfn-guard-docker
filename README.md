@@ -13,9 +13,12 @@ Check the version of cfn-guard:
 $ docker run --rm -i steynovich/cfn-guard:latest --version
 ```
 
-Test the rule (should return zero):
+Test the rule (should return no errors and exit code zero):
 ```
 $ docker run --rm -i steynovich/cfn-guard:latest test --rules-file /opt/rules/s3_enc.guard --test-data /opt/tests/s3_enc.tests.yaml
+PASS Expected Rule = s3_bucket_encryption_check, Status = PASS, Got Status = PASS
+PASS Expected Rule = s3_bucket_encryption_check, Status = FAIL, Got Status = FAIL
+PASS Expected Rule = s3_bucket_encryption_check, Status = PASS, Got Status = PASS
 $ echo $?
 0
 ```
