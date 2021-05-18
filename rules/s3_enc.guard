@@ -1,0 +1,15 @@
+let s3_buckets = Resources.*[ Type == /S3::Bucket/ ]
+
+# Skip the checks if there are no S3 buckets present
+rule s3_bucket_encryption_check when %s3_buckets !empty {
+    %s3_buckets {
+        Properties {             
+             # encryption MUST BE on
+             BucketEncryption.ServerSideEncryptionConfiguration[*] {
+                # only KMS 
+                ServerSideEncryptionByDefault.SSEAlgorithm IN 
+                    ["aws:kms"] 
+             }
+        }
+    }
+}
